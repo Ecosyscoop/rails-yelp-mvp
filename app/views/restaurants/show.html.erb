@@ -1,9 +1,17 @@
 <h1>Restaurant</h1>
 
-<div class = "container">
-  <div class = "row">
-    <div class = "col-4">
-      <%= restaurant.name %>
+<%# Always need @ to have the object activated %>
+<p><%= @restaurant.name %></p>
+<p><%= @restaurant.address %></p>
+<p><%= @restaurant.phone_number %></p>
+<p><%= @restaurant.category %></p>
+
+
+<%# create a rating and review form here! %>
+ <%= simple_form_for [@restaurant, @review] do |f| %>
+        <%= f.input :rating, collection: 0..5 %>
+        <%= f.input :content%>
+        <%= f.submit class: 'btn btn-primary' %>
       <% end %>
-  </div>
-</div>
+
+<%= link_to "Go back to restaurants", restaurants_path,  class: 'btn btn-primary' %>
